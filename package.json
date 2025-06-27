@@ -1,0 +1,20 @@
+{
+  "name": "tourist-untrap",
+  "version": "1.0.0",
+  "description": "Help tourists find the best times to visit attractions to avoid crowds",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm run dev",
+    "client": "cd frontend && npm start",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "test": "concurrently \"cd backend && npm test\" \"cd frontend && npm test\""
+  },
+  "keywords": ["tourism", "crowd-prediction", "travel", "attractions"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 

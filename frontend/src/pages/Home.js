@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Clock, Users, TrendingUp } from 'lucide-react';
+import { Clock, Users, TrendingUp } from 'lucide-react';
 
 const Home = () => {
   return (

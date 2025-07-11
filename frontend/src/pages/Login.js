@@ -3,8 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, Eye, EyeOff, AlertCircle } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 
-const gold = '#FFD700';
-
 const Login = () => {
   const [formData, setFormData] = useState({
     email: '',

@@ -1,7 +1,5 @@
 import React from 'react';
 
-const gold = '#FFD700';
-
 const Dashboard = () => {
   return (
     <div className="max-w-6xl mx-auto min-h-screen bg-black py-12 px-4">

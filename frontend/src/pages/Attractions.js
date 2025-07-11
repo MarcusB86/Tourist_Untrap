@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, MapPin, Clock, Users, Star, DollarSign, Calendar, TrendingUp } from 'lucide-react';
 
-const gold = '#FFD700';
 const cardBg = 'bg-[#18181b]';
 const cardText = 'text-white';
 const placeholderImg = 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80';
@@ -14,7 +13,6 @@ const Attractions = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState('all');
   const [sortBy, setSortBy] = useState('name');
   const [showFilters, setShowFilters] = useState(false);
-  const [selectedAttraction, setSelectedAttraction] = useState(null);
 
   const categories = [
     { value: 'all', label: 'All Categories' },

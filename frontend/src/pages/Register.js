@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, AlertCircle, User, CheckCircle } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, AlertCircle, User } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-
-const gold = '#FFD700';
 
 const Register = () => {
   const [formData, setFormData] = useState({

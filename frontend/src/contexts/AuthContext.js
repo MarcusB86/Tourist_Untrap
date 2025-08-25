@@ -2,6 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { API_ENDPOINTS } from '../config/api';
 
 const AuthContext = createContext();
 
@@ -30,7 +31,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await axios.get('/api/auth/me');
+      const response = await axios.get(API_ENDPOINTS.ME);
       setUser(response.data.user);
     } catch (error) {
       localStorage.removeItem('token');
@@ -42,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post('/api/auth/login', { email, password });
+      const response = await axios.post(API_ENDPOINTS.LOGIN, { email, password });
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await axios.post('/api/auth/register', userData);
+      const response = await axios.post(API_ENDPOINTS.REGISTER, userData);
       const { token, user } = response.data;
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
@@ -78,7 +79,7 @@ export const AuthProvider = ({ children }) => {
 
   const updatePreferences = async (preferences) => {
     try {
-      const response = await axios.put('/api/users/preferences', { preferences });
+      const response = await axios.put(API_ENDPOINTS.USER_PREFERENCES, { preferences });
       setUser(response.data.user);
       toast.success('Preferences updated successfully!');
     } catch (error) {

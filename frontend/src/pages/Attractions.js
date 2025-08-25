@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, MapPin, Clock, Users, Star, DollarSign, Calendar, TrendingUp } from 'lucide-react';
+import { API_ENDPOINTS } from '../config/api';
 
 const cardBg = 'bg-[#18181b]';
 const cardText = 'text-white';
@@ -45,7 +46,7 @@ const Attractions = () => {
   const fetchAttractions = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/api/attractions');
+      const response = await fetch(API_ENDPOINTS.ATTRACTIONS);
       if (response.ok) {
         const data = await response.json();
         setAttractions(data.attractions || data);

@@ -52,6 +52,74 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Test database connection and add basic data
+app.get('/setup', async (req, res) => {
+  try {
+    const { Attraction } = require('./models');
+    
+    // Test database connection
+    await require('./models').sequelize.authenticate();
+    
+    // Add basic attractions if none exist
+    const count = await Attraction.count();
+    if (count === 0) {
+      const basicAttractions = [
+        {
+          name: "Times Square",
+          description: "Famous commercial intersection and tourist destination in Midtown Manhattan",
+          category: "landmark",
+          address: "Manhattan, NY 10036, USA",
+          latitude: 40.7580,
+          longitude: -73.9855,
+          openingHours: { monday: { open: "00:00", close: "23:59" } },
+          averageWaitTime: 0,
+          capacity: 10000,
+          priceRange: "free",
+          rating: 4.3,
+          googlePlaceId: "times_square_nyc",
+          isActive: true
+        },
+        {
+          name: "Central Park",
+          description: "Urban oasis with walking trails, lakes, and recreational facilities",
+          category: "park",
+          address: "Central Park, New York, NY, USA",
+          latitude: 40.7829,
+          longitude: -73.9654,
+          openingHours: { monday: { open: "06:00", close: "22:00" } },
+          averageWaitTime: 0,
+          capacity: 50000,
+          priceRange: "free",
+          rating: 4.8,
+          googlePlaceId: "central_park_nyc",
+          isActive: true
+        }
+      ];
+      
+      for (const attractionData of basicAttractions) {
+        await Attraction.create(attractionData);
+      }
+      
+      res.json({ 
+        message: 'Database connected and basic attractions added!',
+        attractionsAdded: basicAttractions.length,
+        totalAttractions: await Attraction.count()
+      });
+    } else {
+      res.json({ 
+        message: 'Database connected!',
+        totalAttractions: count
+      });
+    }
+  } catch (error) {
+    console.error('Setup error:', error);
+    res.status(500).json({ 
+      message: 'Setup failed',
+      error: error.message 
+    });
+  }
+});
+
 // API routes
 app.use('/api/auth', authRoutes);
 app.use('/api/attractions', attractionRoutes);

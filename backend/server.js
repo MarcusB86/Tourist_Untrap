@@ -66,6 +66,10 @@ app.use((err, req, res, next) => {
 // Database connection and server start
 async function startServer() {
   try {
+    console.log('🔍 Attempting to connect to database...');
+    console.log('📊 Environment:', process.env.NODE_ENV);
+    console.log('🗄️ Database URL:', process.env.DATABASE_URL ? 'Set (hidden for security)' : 'Not set');
+    
     await sequelize.authenticate();
     console.log('✅ Database connection established successfully.');
     
@@ -82,6 +86,11 @@ async function startServer() {
     });
   } catch (error) {
     console.error('❌ Unable to start server:', error);
+    console.error('🔍 Error details:', {
+      name: error.name,
+      message: error.message,
+      code: error.code
+    });
     process.exit(1);
   }
 }

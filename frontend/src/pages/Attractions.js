@@ -3,8 +3,6 @@ import { Search, Filter, MapPin, Clock, Users, Star, DollarSign, Calendar, Trend
 import { API_ENDPOINTS } from '../config/api';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const cardBg = 'bg-[#18181b]';
-const cardText = 'text-white';
 const placeholderImg = 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80';
 
 const Attractions = () => {

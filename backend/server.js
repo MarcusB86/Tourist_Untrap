@@ -55,10 +55,11 @@ app.get('/health', (req, res) => {
 // Test database connection and add basic data
 app.get('/setup', async (req, res) => {
   try {
-    const { Attraction } = require('./models');
+    const { Attraction, sequelize } = require('./models');
     
-    // Test database connection
-    await require('./models').sequelize.authenticate();
+    // Test database connection and sync tables
+    await sequelize.authenticate();
+    await sequelize.sync({ alter: true });
     
     // Add basic attractions if none exist
     const count = await Attraction.count();
@@ -150,11 +151,9 @@ async function startServer() {
     await sequelize.authenticate();
     console.log('✅ Database connection established successfully.');
     
-    // Sync database (in development)
-    if (process.env.NODE_ENV === 'development') {
-      await sequelize.sync({ alter: true });
-      console.log('✅ Database synced.');
-    }
+    // Sync database (create tables if they don't exist)
+    await sequelize.sync({ alter: true });
+    console.log('✅ Database synced.');
     
     app.listen(PORT, () => {
       console.log(`🚀 Server running on port ${PORT}`);

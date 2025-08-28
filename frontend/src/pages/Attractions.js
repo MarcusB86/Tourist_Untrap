@@ -156,7 +156,7 @@ const Attractions = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 bg-black min-h-screen">
+    <div className="max-w-6xl mx-auto px-4 py-8 min-h-screen">
       {/* Header */}
       <motion.div 
         initial={{ opacity: 0, y: -20 }}
@@ -171,7 +171,7 @@ const Attractions = () => {
           className="inline-flex items-center gap-2 mb-4"
         >
           <Sparkles className="h-8 w-8 text-yellow-400" />
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 bg-clip-text text-transparent text-shadow-lg">
             NYC Attractions
           </h1>
           <Sparkles className="h-8 w-8 text-yellow-400" />
@@ -180,7 +180,7 @@ const Attractions = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-xl text-gray-300 max-w-2xl mx-auto"
+          className="text-xl text-gray-300 max-w-2xl mx-auto text-shadow"
         >
           Discover the best times to visit New York's most popular attractions and avoid the crowds
         </motion.p>
@@ -191,7 +191,7 @@ const Attractions = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6, duration: 0.6 }}
-        className="bg-gradient-to-r from-[#18181b] to-[#1f1f23] rounded-2xl shadow-2xl border border-gray-800/50 p-6 mb-8 backdrop-blur-sm"
+        className="bg-glass rounded-2xl shadow-2xl border border-gray-800/50 p-6 mb-8"
       >
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Search */}
@@ -340,7 +340,7 @@ const Attractions = () => {
               boxShadow: "0 20px 40px rgba(251, 191, 36, 0.2)"
             }}
             whileTap={{ scale: 0.98 }}
-            className="group bg-gradient-to-br from-[#18181b] to-[#1f1f23] rounded-2xl shadow-2xl border border-gray-800/50 hover:border-yellow-400/50 transition-all duration-500 relative overflow-hidden backdrop-blur-sm"
+            className="group bg-glass rounded-2xl shadow-2xl border border-gray-800/50 hover:border-yellow-400/50 transition-all duration-500 relative overflow-hidden hover-lift"
           >
             {/* Image Placeholder */}
             <div className="h-48 rounded-t-2xl flex items-center justify-center relative overflow-hidden">

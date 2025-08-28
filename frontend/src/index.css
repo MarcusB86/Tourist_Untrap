@@ -8,7 +8,38 @@
   }
   
   body {
-    @apply bg-gray-50 text-gray-900;
+    @apply text-white;
+    background-image: url('/images/urban-sunset.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    position: relative;
+  }
+  
+  /* Add a subtle overlay to ensure text readability */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  /* Ensure content is above the overlay */
+  #root {
+    position: relative;
+    z-index: 1;
   }
 }
 
@@ -54,5 +85,43 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+  }
+  
+  /* Enhanced background utilities */
+  .bg-glass {
+    background: rgba(24, 24, 27, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+  
+  .bg-glass-dark {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+  }
+  
+  .bg-glass-light {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+  }
+  
+  /* Text shadow utilities for better readability */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Enhanced hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   }
 } 

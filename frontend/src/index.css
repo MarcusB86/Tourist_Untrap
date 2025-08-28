@@ -9,11 +9,6 @@
   
   body {
     @apply text-white;
-    background-image: url('/images/urban-sunset.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
     min-height: 100vh;
     position: relative;
   }
